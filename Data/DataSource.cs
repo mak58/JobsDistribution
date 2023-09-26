@@ -11,20 +11,51 @@ public class DataSource
         };
     }  
 
-    internal static ServiceType QueryServiceTypes()
+    internal static List<ServiceType> QueryServiceTypes()
     {
-        return new ServiceType()
+        return new()
         {
-
-            Id = 1,
-            Description = "Music letter",
-            Active = true,
+            new ServiceType
+            {
+            Id = 1, 
+            Description = "Music letter registry", 
+            Active = true, 
+            JobsCount = JobCount.Quantity,
             Charges =
                     new List<Charge>
                         {
-                        new() {Id = 1, Description = "Registry", Value = 50.00M},
-                        new() {Id = 2, Description = "Tax",Value = 5M}
+                           new() {Id = 1, Description = "Registry", Value = 50.00M},
+                           new() {Id = 2, Description = "Tax", Value = 5M}
                         }                  
+            },
+
+            new ServiceType
+            {
+            Id = 2, 
+            Description = "Documento apostile", 
+            Active = true, 
+            JobsCount = JobCount.Quantity,
+            Charges =
+                    new List<Charge>
+                        {
+                           new() {Id = 1, Description = "Apostilamento", Value = 80.00M},
+                           new() {Id = 2, Description = "Tax", Value = 5M}
+                        }                  
+            },
+
+            new ServiceType
+            {
+            Id = 3,
+            Description = "Contrifield ballot",
+            Active = true,
+            JobsCount = JobCount.Amount,
+            Charges =
+                    new List<Charge>
+                        {
+                           new() {Id = 1, Description = "Registry", Value = 99.00M},
+                           new() {Id = 2, Description = "Tax", Value = 5M}
+                        }                  
+            }
         };
     }   
 }
