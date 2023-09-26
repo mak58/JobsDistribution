@@ -42,14 +42,16 @@ public static class InitiateDistribuiton
         Logo.PrintLogo();
 
         if (serviceKind is not null)
-            Console.WriteLine($"{serviceKind.Id} - {serviceKind.Description}");
+            Console.WriteLine($"Job: [{serviceKind.Id}] - {serviceKind.Description}");
         else
             MenuApplication.Menu();
 
         Console.WriteLine();
         Console.WriteLine("* ...... Creating a new job .... *");
         Console.WriteLine();
+        Thread.Sleep(2000);
         Console.WriteLine("* ..... Wait a second please ....*");                
+        Thread.Sleep(2000);
     }
 
     public static void CreateJob(ServiceType serviceKind)
@@ -62,7 +64,7 @@ public static class InitiateDistribuiton
 
         Console.WriteLine();
         Console.WriteLine(" --------------------------------------");
-        Console.WriteLine($"***[ Job by quantity send to Company #{company}]***");
+        Console.WriteLine($"***[ Job by quantity send to Company #{company} ]***");
         Console.WriteLine(" --------------------------------------");
     }
 }

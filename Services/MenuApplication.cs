@@ -4,24 +4,26 @@ public static class MenuApplication
 {
     public static void Menu()
     {
-        Logo.PrintLogo();
+        Logo.PrintLogo();        
 
         var serviceChosed = StartInteraction.ChoseOption(true);
         var Continue = true;
 
-        while (serviceChosed < 3)
+        while (serviceChosed < 6) 
         {
             switch (serviceChosed)
             {
+                case 0: EndInteraction.Exit(true); break;
+
                 case 1: JobsReport.Report(); break;
                                                                             
                 case 2: InitiateDistribuiton.InitiateJob(); break;
 
-                case 3: Continue = false; break;
+                case 3: IncludeTypeService.Include(); break;
 
                 case 4: MenuApplication.Menu(); break;
 
-                // case 5: 
+                case 5: EndInteraction.Exit(); break;
 
                 default : EndInteraction.Exit(); break;
 
@@ -30,6 +32,7 @@ public static class MenuApplication
             // Call the jobs list without prior option chosed
             if (Continue)
             {
+                Thread.Sleep(3000);
                 var newServiceChose = StartInteraction.ChoseOption(false, serviceChosed);    
                 serviceChosed = newServiceChose;            
             }               

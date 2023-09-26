@@ -15,9 +15,6 @@ public static class JobsReport
                 Console.WriteLine($"Company [{item.Id}] - Quantity jobs {item.Quantity} - Amount {item.Amount}.");
 
         Console.WriteLine();
-        Console.WriteLine("--- End of jobs report -----");
-        // Console.WriteLine();                    
-    }
-
-        
+        Console.WriteLine("--- End of jobs report -----");                            
+    }        
 }

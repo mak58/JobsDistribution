@@ -11,10 +11,12 @@ namespace Distribuited.Services;
             | |    | |  \ |   | |
             | |___ | |__/ |   | |
             \_____||_____/    |_| 
-         Company distribuition Titles ";
+         Company distribuition Titles® 
+         ";
 
-        Console.WriteLine(logo); 
-        Console.WriteLine();   
+        Console.WriteLine(logo);         
+        Console.WriteLine($"***{DateTime.Now}***");
+        Console.WriteLine();                   
     }
     
 }
