@@ -12,7 +12,7 @@ public static class JobsReport
         Console.WriteLine();
 
             foreach (var item in listItems)
-                Console.WriteLine($"Company [{item.Id}] - Quantity jobs {item.Quantity} - Amount {item.Amount}.");
+                Console.WriteLine($"Company [{item.Id}] - Quantity jobs {item.Quantity} - Amount ${item.Amount}.");
 
         Console.WriteLine();
         Console.WriteLine("--- End of jobs report -----");                            

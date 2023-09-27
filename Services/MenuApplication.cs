@@ -25,8 +25,7 @@ public static class MenuApplication
 
                 case 5: EndInteraction.Exit(); break;
 
-                default : EndInteraction.Exit(); break;
-
+                default : MenuApplication.Menu(); break;
             }
 
             // Call the jobs list without prior option chosed

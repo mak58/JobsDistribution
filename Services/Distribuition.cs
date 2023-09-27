@@ -8,13 +8,13 @@ public static class Distribuition
     /// </summary>
     /// <param name="listItems"></param>
     /// A list of quantity and amount of jobs requests on the  Company.
-    /// <param name="CountType"></param>
-    /// The method to calculate the jobs distribuition
+    /// <param name="JobCount"></param>
+    /// Enum type of two values to define the way to distribuite the job.
     /// <returns> Int that means the Company number</returns> <summary>
     
     public static int CalculateDistribuite(List<Title> listItems, JobCount JobCount )
     {
-        var Company = 0;
+        var company = 0;
         var valueMax = 10000000M;
                 
         for (int i = 0; i < listItems.Count; i++)
@@ -22,15 +22,15 @@ public static class Distribuition
                 if ((listItems[i].Quantity < valueMax) && (JobCount == JobCount.Quantity))
                 {
                     valueMax = listItems[i].Quantity;
-                    Company = listItems[i].Id;                                 
+                    company = listItems[i].Id;                                 
                 }            
                 else                          
                     if ((listItems[i].Amount < valueMax) && (JobCount == JobCount.Amount))                   
                     {
                         valueMax = listItems[i].Amount;      
-                        Company = listItems[i].Id;             
+                        company = listItems[i].Id;             
                     }                                                                                  
         } 
-        return Company;       
+        return company;       
     }
 }

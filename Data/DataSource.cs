@@ -5,9 +5,9 @@ public class DataSource
     {
         return new()
         {
-            new Title {Id = 1, Quantity = 1, Amount = 100M},
-            new Title {Id = 2, Quantity = 3, Amount = 135.50M},
-            new Title {Id = 3, Quantity = 4, Amount = 99.75M}
+            new Title {Id = 1, Quantity = 1, Amount = 55.00M},
+            new Title {Id = 2, Quantity = 3, Amount = 255.00M},
+            new Title {Id = 3, Quantity = 4, Amount = 418.00M}
         };
     }  
 
@@ -46,14 +46,14 @@ public class DataSource
             new ServiceType
             {
             Id = 3,
-            Description = "Contrifield ballot",
+            Description = "Rural promissory note",
             Active = true,
             JobsCount = JobCount.Amount,
             Charges =
                     new List<Charge>
                         {
                            new() {Id = 1, Description = "Registry", Value = 99.00M},
-                           new() {Id = 2, Description = "Tax", Value = 5M}
+                           new() {Id = 2, Description = "Tax", Value = 5.50M}
                         }                  
             }
         };
