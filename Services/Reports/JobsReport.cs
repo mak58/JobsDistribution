@@ -8,13 +8,11 @@ public static class JobsReport
 
         List<Title> listItems = DataSource.QueryJobsCount(); //Jobs List                                 
         
-        Console.WriteLine("--- Presenting jobs report -----");
-        Console.WriteLine();
+        PrintIntoScreen.ConsoleWriteline("--- Presenting jobs report -----");        
 
             foreach (var item in listItems)
                 Console.WriteLine($"Company [{item.Id}] - Quantity jobs {item.Quantity} - Amount ${item.Amount}.");
-
-        Console.WriteLine();
-        Console.WriteLine("--- End of jobs report -----");                            
+        
+        PrintIntoScreen.ConsoleWriteline("--- End of jobs report -----");                            
     }        
 }

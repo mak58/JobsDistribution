@@ -1,8 +1,9 @@
 namespace Distribuited.Data;
 public class DataSource
 {
-    internal static List<Title> QueryJobsCount()
+    internal static List<Title> QueryJobsCount() // V1 behavior
     {
+        //TODO Create a select in method JobTable grouped by Company
         return new()
         {
             new Title {Id = 1, Quantity = 1, Amount = 55.00M},
@@ -11,51 +12,4 @@ public class DataSource
         };
     }  
 
-    internal static List<ServiceType> QueryServiceTypes()
-    {
-        return new()
-        {
-            new ServiceType
-            {
-            Id = 1, 
-            Description = "Music letter registry", 
-            Active = true, 
-            JobsCount = JobCount.Quantity,
-            Charges =
-                    new List<Charge>
-                        {
-                           new() {Id = 1, Description = "Registry", Value = 50.00M},
-                           new() {Id = 2, Description = "Tax", Value = 5M}
-                        }                  
-            },
-
-            new ServiceType
-            {
-            Id = 2, 
-            Description = "Documento apostile", 
-            Active = true, 
-            JobsCount = JobCount.Quantity,
-            Charges =
-                    new List<Charge>
-                        {
-                           new() {Id = 1, Description = "Apostilamento", Value = 80.00M},
-                           new() {Id = 2, Description = "Tax", Value = 5M}
-                        }                  
-            },
-
-            new ServiceType
-            {
-            Id = 3,
-            Description = "Rural promissory note",
-            Active = true,
-            JobsCount = JobCount.Amount,
-            Charges =
-                    new List<Charge>
-                        {
-                           new() {Id = 1, Description = "Registry", Value = 99.00M},
-                           new() {Id = 2, Description = "Tax", Value = 5.50M}
-                        }                  
-            }
-        };
-    }   
 }

@@ -15,8 +15,7 @@ namespace Distribuited.Services;
          ";
 
         Console.WriteLine(logo);         
-        Console.WriteLine($"***{DateTime.Now}***");
-        Console.WriteLine();                   
+        Console.WriteLine($"***{DateTime.Now}***");                           
     }
     
 }

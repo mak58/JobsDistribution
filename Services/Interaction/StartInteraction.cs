@@ -1,3 +1,4 @@
+
 namespace Distribuited.Services;
 
 public static class StartInteraction
@@ -6,29 +7,26 @@ public static class StartInteraction
     {        
         Dictionary<int, string> menuItens = new()
         {
+            { 0, "Exit."},
             { 1, "Jobs report." },
-            { 2, "Create a job."},
+            { 2, "Create a job V1"},
             { 3, "Include a Service Type."},
             { 4, "Return to Menu"},
-            { 5, "Exit."}
+            { 5, "Create Job V2"}
+            
         };            
 
             if (include)
-                Console.WriteLine("Hello! How can I help you today?");
+                PrintIntoScreen.ConsoleWriteline("Hello! How can I help you today?");
             else
-            {
-                Console.WriteLine();
-                Console.WriteLine("Let's go ahead! What else let's to do together right now?");                
-            }
-                            
-            Console.WriteLine();
-            Console.WriteLine("Chose one option and type...:");            
-            Console.WriteLine();  
+                PrintIntoScreen.ConsoleWriteline("Let's go ahead! What else let's to do together right now?");
+                                
+            PrintIntoScreen.ConsoleWriteline("Chose one option and type...:");                        
 
             menuItens.Remove(serviceChosed);                                 
             
             foreach (var item in menuItens)
-                Console.WriteLine($"[{item.Key}] - {item.Value}");                            
+                PrintIntoScreen.ConsoleWriteline($"[{item.Key}] - {item.Value}");                            
 
             bool validNumber =  int.TryParse(Console.ReadLine(), out var number);
             
