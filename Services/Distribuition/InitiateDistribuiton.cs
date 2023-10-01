@@ -15,7 +15,7 @@ public static class InitiateDistribuiton
         PrintIntoScreen.ConsoleWriteline("Choose an option to create a job!");
                     
         var serviceId = InitiateDistribuiton.PresentServices();
-
+        
         ServiceType? serviceKind = _listServiceTypes.FirstOrDefault(s => s.Id == serviceId);
 
         GetServiceType(serviceKind);        
@@ -51,7 +51,7 @@ public static class InitiateDistribuiton
 
         PrintIntoScreen.ConsoleWriteline("Please, Choose a type of service do you want to create!");
         
-        PrintIntoScreen.ConsoleWriteline("[Service Types]");        
+        PrintIntoScreen.ConsoleWriteline("[Service Types]\n");        
 
         foreach (var services in _listServiceTypes)
             Console.WriteLine($"Id [{services.Id}] - Service: {services.Description}");            

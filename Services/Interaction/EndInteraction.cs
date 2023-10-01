@@ -5,13 +5,12 @@ public static class EndInteraction
     public static void Exit(bool except = false)
     {
         if (except)
-            Console.WriteLine("Option not found!");
+            PrintIntoScreen.ConsoleWriteline("Option not found!");
         else
-            Console.WriteLine("Opsss....");
+            PrintIntoScreen.ConsoleWriteline("Opsss....");
         
-        PrintIntoScreen.ConsoleWriteline("Warm regards! Have a nice day!");
-        Console.WriteLine("Thanks to have you here! By by...");                
-        Console.WriteLine();        
+        PrintIntoScreen.ConsoleWriteline("Thanks to have you here! By by...");
+        PrintIntoScreen.ConsoleWriteline("Warm regards! Have a nice day!\n");                                
         Environment.Exit(0);
     }
         

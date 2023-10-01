@@ -11,9 +11,8 @@ public static class StartInteraction
             { 1, "Jobs report." },
             { 2, "Create a job V1"},
             { 3, "Include a Service Type."},
-            { 4, "Return to Menu"},
-            { 5, "Create Job V2"}
-            
+            { 4, "Include a Charge Type"},
+            { 5, "Create Job V2"}            
         };            
 
             if (include)
@@ -21,12 +20,11 @@ public static class StartInteraction
             else
                 PrintIntoScreen.ConsoleWriteline("Let's go ahead! What else let's to do together right now?");
                                 
-            PrintIntoScreen.ConsoleWriteline("Chose one option and type...:");                        
-
-            menuItens.Remove(serviceChosed);                                 
+            PrintIntoScreen.ConsoleWriteline("Chose one option and type...:\n");                        
+                                             
             
             foreach (var item in menuItens)
-                PrintIntoScreen.ConsoleWriteline($"[{item.Key}] - {item.Value}");                            
+                Console.WriteLine($"[{item.Key}] - {item.Value}");                            
 
             bool validNumber =  int.TryParse(Console.ReadLine(), out var number);
             

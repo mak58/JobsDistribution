@@ -1,3 +1,5 @@
+using Distribuited.Services.IncludeTypes;
+
 namespace Distribuited.Services;
 
 public static class MenuApplication
@@ -8,8 +10,7 @@ public static class MenuApplication
 
         Logo.PrintLogo();        
 
-        var chosenService = StartInteraction.ChoseOption(true);
-        var Continue = true;
+        var chosenService = StartInteraction.ChoseOption(true);        
 
         while (chosenService < 6) 
         {
@@ -23,20 +24,15 @@ public static class MenuApplication
 
                 case 3: IncludeServiceType.Include(); break;
 
-                case 4: MenuApplication.Menu(); break;
+                case 4: IncludeCharges.Include(); break;
 
                 case 5: InitiateDistribuiton.InitiateJob(chosenService); break;
 
                 default : EndInteraction.Exit(true);; break;
+                
             }
-
-            // Call the jobs list without prior option chosed
-            if (Continue)
-            {
-                Thread.Sleep(3000);
-                var newServiceChose = StartInteraction.ChoseOption(false, chosenService);    
-                chosenService = newServiceChose;            
-            }               
+            Thread.Sleep(3000);
+            chosenService = StartInteraction.ChoseOption(false);        
         }
     }
         
