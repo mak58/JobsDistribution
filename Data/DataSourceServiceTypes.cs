@@ -13,12 +13,7 @@ public static class DataSourceServiceTypes
             Active = true,
             Code = "MLR",
             JobsCount = JobCount.Quantity,
-            Charges =
-                    new List<Charge>
-                        {
-                           new() {Id = 1, Description = "Registry", Value = 50.00M},
-                           new() {Id = 2, Description = "Tax", Value = 5M}
-                        }                  
+            Charges = new[] {1,2}                  
             },
 
             new ServiceType
@@ -28,12 +23,7 @@ public static class DataSourceServiceTypes
             Active = true,
             Code = "DA", 
             JobsCount = JobCount.Quantity,
-            Charges =
-                    new List<Charge>
-                        {
-                           new() {Id = 1, Description = "Apostilament", Value = 60.00M},
-                           new() {Id = 2, Description = "Tax", Value = 5M}
-                        }                  
+            Charges = new[] {1,3}                 
             },
 
             new ServiceType
@@ -43,13 +33,8 @@ public static class DataSourceServiceTypes
             Active = true,
             Code = "RPN",
             JobsCount = JobCount.Amount,
-            Charges =
-                    new List<Charge>
-                        {
-                           new() {Id = 1, Description = "Rural Registry", Value = 99.00M},
-                           new() {Id = 2, Description = "Tax", Value = 5.50M}
-                        }                  
+            Charges = new[] {1,4}
             }
-        };
-    }   
+        };       
+    }
 }

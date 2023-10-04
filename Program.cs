@@ -2,9 +2,21 @@
 
 public static class Program
 {
-    private static List<Job> jobs = new(DataSourceJobs.JobsTable());
+    #region 
+        private static List<Job> jobs = new(DataSourceJobs.JobsTable());
+        public static List<Job> Jobs { get => jobs; set => jobs = value; }
+    #endregion
 
-    public static List<Job> Jobs { get => jobs; set => jobs = value; }
+    #region
+        private static List<Charge> charges = new(DataSourceCharges.ChargesTable()); 
+        public static List<Charge> Charges { get => charges; set => charges = value; }
+    
+    #endregion
+
+    #region 
+        private static List<ServiceType> serviceTypesDataSource = new(DataSourceServiceTypes.ServiceTypesTable());
+        public static List<ServiceType> ServiceTypesDataSource { get => serviceTypesDataSource; set => serviceTypesDataSource = value; }
+    #endregion
 
     public static void Main()
     {

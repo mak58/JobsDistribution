@@ -24,7 +24,7 @@ public static class MenuApplication
 
                 case 3: IncludeServiceType.Include(); break;
 
-                case 4: IncludeCharges.Include(); break;
+                case 4: IncludeChargesType.Include(); break;
 
                 case 5: InitiateDistribuiton.InitiateJob(chosenService); break;
 
@@ -34,6 +34,7 @@ public static class MenuApplication
             Thread.Sleep(3000);
             chosenService = StartInteraction.ChoseOption(false);        
         }
+        
     }
         
 }

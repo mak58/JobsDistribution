@@ -28,16 +28,16 @@ public static class JobsDistribuitionVersionOne
 
             ServiceType? serviceKind = _listServiceTypes.FirstOrDefault(s => s.Id == serviceId);       
             
-            var amount = 0M;
-            foreach (var item in serviceKind.Charges)
-                amount += item.Value;
+            // var amount = 0M;
+            // foreach (var item in serviceKind.Charges)
+            //     amount += item.Value;
             
-            var index = _listItems.FindIndex(x => x.Id == companyId);
-            _listItems[index].Quantity ++;
-            _listItems[index].Amount += amount;
+            // var index = _listItems.FindIndex(x => x.Id == companyId);
+            // _listItems[index].Quantity ++;
+            // _listItems[index].Amount += amount;
 
-            foreach (var item in _listItems)
-                Console.WriteLine(item);
+            // foreach (var item in _listItems)
+            //     Console.WriteLine(item);
         }
             
 }
