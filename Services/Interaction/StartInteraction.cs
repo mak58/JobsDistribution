@@ -9,19 +9,21 @@ public static class StartInteraction
         {
             { 0, "Exit."},
             { 1, "Jobs report." },
-            { 2, "Create a job V1"},
+            { 2, "Create a job."},
             { 3, "Include a Service Type."},
             { 4, "Include a Charge Type"},
-            { 5, "Create Job V2"}            
+            { 5, "..."}            
         };            
 
             if (include)
                 PrintIntoScreen.ConsoleWriteline("Hello! How can I help you today?");
             else
                 PrintIntoScreen.ConsoleWriteline("Let's go ahead! What else let's to do together right now?");
+
+            Thread.Sleep(300);
                                 
             PrintIntoScreen.ConsoleWriteline("Chose one option and type...:\n");                        
-                                             
+            Thread.Sleep(300);                                             
             
             foreach (var item in menuItens)
                 Console.WriteLine($"[{item.Key}] - {item.Value}");                            

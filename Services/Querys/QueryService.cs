@@ -7,7 +7,7 @@ public static class QueryService
         return DataSourceCompanies.CompanyTable().Where(c => c.Active == true).Select(c => c.Id).ToList();
     }   
 
-    public static List<Title> GetListTitleByCodeServiceType(string code)
+    public static List<Title> GetTitlesListByServiceTypeCode(string code)
     {
         var listActiveCompanies = QueryService.GetActiveCompanies();
 
@@ -39,8 +39,11 @@ public static class QueryService
             listJobsCount.Add(titleCounting);
         }
         
-        foreach (var item in listJobsCount)        
-            System.Console.WriteLine($"{item.Id},{item.Quantity}, {item.Amount}");
+        #region // It's just for test
+            foreach (var item in listJobsCount)        
+                System.Console.WriteLine($"Code= {code}, Id= {item.Id},Quantity= {item.Quantity}, Amount= {item.Amount}");
+            Thread.Sleep(2000);
+        #endregion
 
         return listJobsCount;
     }     

@@ -1,12 +1,6 @@
-using System.Data.Common;
-using System.Diagnostics.Contracts;
-using System.IO.Compression;
-using System.Runtime.CompilerServices;
-using Distribuited.Services.Querys;
-
 namespace Distribuited.Services;
 
-public static class Distribuition
+public static class DistribuitionCalculation
 {
     /// <summary>
     /// This method receives a list of all services commited by Company 
@@ -34,24 +28,17 @@ public static class Distribuition
         return company;                       
     }
 
-    public static int CalculateDistribuiteByAmount()
+    public static int CalculateDistribuiteByAmount(List<Title> titles)
     {
         var company = 0;
         var valueMax = 10000000M;
-
-        
-        var groupItems = Program.Jobs.GroupBy(x => x.Company);
-        var listItems = new List<Title>();
-
-        foreach (var item in groupItems)
-            System.Console.WriteLine(item);
                 
-        for (int i = 0; i < listItems.Count; i++)
+        for (int i = 0; i < titles.Count; i++)
         {                             
-            if (listItems[i].Amount < valueMax)                  
+            if (titles[i].Amount < valueMax)                  
             {
-                valueMax = listItems[i].Amount;      
-                company = listItems[i].Id;             
+                valueMax = titles[i].Amount;      
+                company = titles[i].Id;             
             }                                                                                  
         } 
         return company;       
