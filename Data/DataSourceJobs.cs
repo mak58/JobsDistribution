@@ -6,10 +6,10 @@ public static class DataSourceJobs
     {
         return new()
         {
-            new Job {Id = 1, Code = "MLR", CreatedAt = new DateTime(2023,09,01), ValueForwardingId = 1, Company = 1},
-            new Job {Id = 2, Code = "DA", CreatedAt = new DateTime(2023,09,05), ValueForwardingId = 2, Company = 1},
-            new Job {Id = 3, Code = "RPN", CreatedAt = new DateTime(2023,09,10), ValueForwardingId = 3, Company = 1},
-            new Job {Id = 4, Code = "MLR", CreatedAt = new DateTime(2023,09,15), ValueForwardingId = 4, Company = 2},            
+            new Job {Id = 1, Code = "MLR", CreatedAt = new DateTime(2023,09,01), Company = 1},
+            new Job {Id = 2, Code = "DA", CreatedAt = new DateTime(2023,09,05), Company = 1},
+            new Job {Id = 3, Code = "RPN", CreatedAt = new DateTime(2023,09,10), Company = 1},
+            new Job {Id = 4, Code = "MLR", CreatedAt = new DateTime(2023,09,15), Company = 2},            
         };
     }        
 }

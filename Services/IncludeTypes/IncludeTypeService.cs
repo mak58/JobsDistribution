@@ -34,7 +34,7 @@ public static class IncludeServiceType
 
         /// Show all Charges options available
         #region 
-            var chargesDataSource = Program.Charges.Where(X => X.Active == true);                    
+            var chargesDataSource = Program.Charges.Where(X => X.Active == true).ToList();                    
             
             foreach (var item in chargesDataSource)
                 Console.WriteLine($"Id = {item.Id}, {item.Description}");
