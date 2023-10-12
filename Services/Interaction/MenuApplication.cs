@@ -20,13 +20,13 @@ public static class MenuApplication
 
                 case 1: JobsReport.Report(); break;
                                                                             
-                case 2: CreatingJob.InitiateJob(chosenService); break;
+                case 2: InitiateJob.OrderingJob(chosenService); break;
 
                 case 3: IncludeServiceType.Include(); break;
 
                 case 4: IncludeChargesType.Include(); break;
 
-                case 5: JobsReport.ReportAllJobs(); break;
+                // case 5: JobsReport.AllJobsReport(); break;
 
                 default : EndInteraction.Exit(true);; break;
                 

@@ -1,4 +1,5 @@
 using Distribuited.Services.IncludeTypes;
+using Distribuited.Services.Querys;
 
 namespace Distribuited.Services;
 
@@ -31,36 +32,34 @@ public static class IncludeServiceType
         var countType = char.Parse(Console.ReadLine().ToUpper()) == 'Q' ? JobCount.Quantity : JobCount.Amount ;              
 
         PrintIntoScreen.ConsoleWriteline("Enter the number of charges for this type of service separated by a space:\n ");        
-
-        /// Show all Charges options available
-        #region 
-            var chargesDataSource = Program.Charges.Where(X => X.Active == true).ToList();                    
-            
-            foreach (var item in chargesDataSource)
-                Console.WriteLine($"Id = {item.Id}, {item.Description}");
-            var charges = Console.ReadLine().Split(' ', ',');         // here it takes the existent Charges
-
-            PrintIntoScreen.ConsoleWriteline("Do you want to add a new change type? 'Y' or 'N' ? ");
-            var hasNewCharge = char.Parse(Console.ReadLine().ToUpper()) == 'Y';
-
-            var newCharge = new Charge();
-
-            if (hasNewCharge)
-            {
-                // Calls new charge type input
-                newCharge = IncludeChargesType.GetChargeFromUser();
+        
+        #region /// Show all Charges options available
+            var chargesDataSource = QueryService.GetActiveCharges(true);                   
+                            
+            var chargesFromUser = Console.ReadLine().Split(' ', ','); // here it takes the existent Charges
+        #endregion
                 
-                IncludeChargesType.GetUpdatedChargesList(newCharge);        
-            }
+            #region // Calls new charge type input 
+                PrintIntoScreen.ConsoleWriteline("Do you want to add a new change type? 'Y' or 'N' ? ");
+                var hasNewCharge = char.Parse(Console.ReadLine().ToUpper()) == 'Y';
 
-            var chargesList = new int[charges.Length + 1];
-            
-            for (int i = 0; i < charges.Length; i++)        
-                if (int.TryParse(charges[i], out int number))
-                    chargesList[i] = number;
+                var newCharge = new Charge();
 
-            chargesList[charges.Length] = newCharge.Id;                
-        #endregion            
+                if (hasNewCharge)
+                {
+                    newCharge = IncludeChargesType.GetChargeFromUser();
+                    
+                    IncludeChargesType.GetUpdatedChargesList(newCharge);        
+                }
+
+                var chargesList = new int[chargesFromUser.Length + 1];
+                
+                for (int i = 0; i < chargesFromUser.Length; i++)        
+                    if (int.TryParse(chargesFromUser[i], out int number))
+                        chargesList[i] = number;
+
+                chargesList[chargesFromUser.Length] = newCharge.Id;                
+            #endregion            
 
         return new ServiceType()
         {
@@ -76,9 +75,9 @@ public static class IncludeServiceType
 
     public static List<ServiceType> GetUpdatedServiceTypeList(ServiceType newServiceType)
     {
-        Program.ServiceTypesDataSource.Add(newServiceType);
+        Program.ServiceTypes.Add(newServiceType);
 
-        return Program.ServiceTypesDataSource;
+        return Program.ServiceTypes;
     } 
 
 

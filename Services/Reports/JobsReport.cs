@@ -1,3 +1,5 @@
+using Distribuited.Services.Reports;
+
 namespace Distribuited.Services;
 
 public static class JobsReport
@@ -6,26 +8,46 @@ public static class JobsReport
     {        
         Logo.PrintLogo();
 
-        List<Title> listItems = DataSource.QueryJobsCount(); //Jobs List                                 
-        
-        PrintIntoScreen.ConsoleWriteline("--- Presenting jobs report -----\n");
-        Thread.Sleep(300);        
+        AskingToUserWhichReport();                                            
+    }
 
-            foreach (var item in listItems)
-                Console.WriteLine($"Company [{item.Id}] - Quantity jobs {item.Quantity} - Amount ${item.Amount}.");
-        
-        PrintIntoScreen.ConsoleWriteline("--- End of jobs report -----");                            
-    }  
-
-    public static void ReportAllJobs()
+    public static void AskingToUserWhichReport()
     {
-        Logo.PrintLogo();        
+        Dictionary<int, string> menuReportItems = new()
+        {
+            {0, "Back"},
+            {1, "All Changes."},
+            {2, "All ServiceTypes."},
+            {3, "All Jobs."},
+            {4, "Jobs by Code."},
+            {5, "Jobs by Date."}
+        };
 
-        var allJobs = Program.Jobs.ToList();
+        PrintIntoScreen.ConsoleWriteline("Great! But which report do you like to see?\n");
+        
+        foreach (var menuItem in menuReportItems)
+            Console.WriteLine($"[{menuItem.Key}] - {menuItem.Value}");                            
+        
+        var optionMenu = int.Parse(Console.ReadLine());
+    
+            switch (optionMenu)
+            {
+                case 0 : MenuApplication.Menu(); break;
 
-        PrintIntoScreen.ConsoleWriteline("--- Presenting all jobs report -----\n"); 
+                case 1 : UserInteractionReport.AllChangesReport(); break;
 
-        foreach (var job in allJobs)
-            System.Console.WriteLine($"Job > #{job.Id}, ServiceType > {job.Code}, To Company > {job.Company}, Created at > {job.CreatedAt}");
-    }      
+                case 2 : UserInteractionReport.AllJobsReport(); break;
+
+                case 3 : UserInteractionReport.AllJobsReport(); break;
+
+                case 4 : UserInteractionReport.AllValueForwardings(); break;
+
+                default: MenuApplication.Menu(); break;
+            } 
+
+            PrintIntoScreen.ConsoleWriteline("--- End of jobs report -----\n");
+            Thread.Sleep(3000);                   
+            AskingToUserWhichReport();
+    } 
+
 }

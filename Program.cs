@@ -13,8 +13,8 @@ public static class Program
     #endregion
 
     #region // global Variable Service Type list
-        private static List<ServiceType> serviceTypesDataSource = new(DataSourceServiceTypes.ServiceTypesTable());
-        public static List<ServiceType> ServiceTypesDataSource { get => serviceTypesDataSource; set => serviceTypesDataSource = value; }
+        private static List<ServiceType> serviceTypes = new(DataSourceServiceTypes.ServiceTypesTable());
+        public static List<ServiceType> ServiceTypes { get => serviceTypes; set => serviceTypes = value; }
     #endregion
 
     #region // global Variable ValueForwardings list
