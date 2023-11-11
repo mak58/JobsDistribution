@@ -4,7 +4,7 @@ namespace Distribuited.Repositories;
 
 public class ValueForwardingRepository
 {
-    public static bool AddValueForwarding(int companyId, Object charges, string code)
+    public static bool AddValueForwarding(int companyId, object charges, string code)
     {    
         var valueForwarding = new ValueForwarding()
         {   

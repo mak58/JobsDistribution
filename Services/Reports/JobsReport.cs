@@ -36,7 +36,7 @@ public static class JobsReport
 
                 case 1 : UserInteractionReport.AllChangesReport(); break;
 
-                case 2 : UserInteractionReport.AllJobsReport(); break;
+                case 2 : UserInteractionReport.AllServiceTypeReport(); break;
 
                 case 3 : UserInteractionReport.AllJobsReport(); break;
 

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\marcio.koehler\\Documents\\Distribuited\\Distribuited.csproj",
+      "projectUniqueName": "C:\\Users\\marcio.koehler\\Documents\\Distribuited\\Distribuited\\Distribuited.csproj",
       "projectName": "Distribuited",
-      "projectPath": "c:\\Users\\marcio.koehler\\Documents\\Distribuited\\Distribuited.csproj",
+      "projectPath": "C:\\Users\\marcio.koehler\\Documents\\Distribuited\\Distribuited\\Distribuited.csproj",
       "packagesPath": "C:\\Users\\marcio.koehler\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\marcio.koehler\\Documents\\Distribuited\\obj\\",
+      "outputPath": "C:\\Users\\marcio.koehler\\Documents\\Distribuited\\Distribuited\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\marcio.koehler\\AppData\\Roaming\\NuGet\\NuGet.Config"

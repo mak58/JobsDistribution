@@ -48,7 +48,7 @@ public static class QueryService
     
     public static List<Title> GetTitlesListByServiceTypeCode(string code)
     {
-        var listActiveCompanies = QueryService.GetActiveCompanies();
+        var listActiveCompanies = GetActiveCompanies();
 
         var listJobsCount = new List<Title>();
         
@@ -77,7 +77,7 @@ public static class QueryService
                     Amount = listJobsValues is not null ? listJobsValues.Sum(x => x.TotalValue) : 0
             };   
 
-        System.Console.WriteLine(listJobsValues.Count);
+        Console.WriteLine(listJobsValues.Count);
         
         foreach (var item in listJobsValues)
         {
@@ -97,17 +97,25 @@ public static class QueryService
         return listJobsCount;
     }   
 
+    /// <summary>
+    ///  Summing values from ServiceType through join to Charges Table
+    /// </summary>
+    /// <param name="code"></param>
+    /// Type code parameter 
+    /// <returns></returns> <summary>
+    /// sum decimal value calcuated 
+    /// </summary>
     public static decimal GetChangesListByServiceTypeCode(string code)
     {           
-        // Method in stand by...
-        var charges = from service in Program.ServiceTypes.ToList()
-                      from Charge in service.Charges
-                      join charge in Program.Charges
-                      on Charge equals charge.Id
-                      where service.Code == code
-                      select new
+        
+        var charges = from service in Program.ServiceTypes.ToList()     // group all serviceTypes 
+                      from Charge in service.Charges                    // group only array charges in service charges
+                      join charge in Program.Charges                    // Join Charges ids from ServiceTypes to ChargesTable
+                      on Charge equals charge.Id                        // matching the code from ServiceTypes to ChargesTable code 
+                      where service.Code == code                        // codes are equals
+                      select new                                        
                       {                        
-                        charge.Value                        
+                        charge.Value                                    // fetch only one field (chargeValue)
                       };
 
         var sumCharges = 0M;

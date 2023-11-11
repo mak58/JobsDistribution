@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3P8epuaBf6nG9bU1XGNfEft35jzUhytWTA7QCygOZibl0/rvhP8lBRFR7rs2bGYeVd/WK8rMbYP2Ya4ZTrgCvQ==",
+  "dgSpecHash": "s0LlnnlGXPc/xq61PyLjR/EZekoM5WxN2/9BLILuWfDqquR4dJCArp0R12MekAA9JIroT6CdWTxg6XdC66TOEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\marcio.koehler\\Documents\\Distribuited\\Distribuited.csproj",
+  "projectFilePath": "C:\\Users\\marcio.koehler\\Documents\\Distribuited\\Distribuited\\Distribuited.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\marcio.koehler\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.23\\microsoft.netcore.app.ref.6.0.23.nupkg.sha512",
     "C:\\Users\\marcio.koehler\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.23\\microsoft.windowsdesktop.app.ref.6.0.23.nupkg.sha512",
