@@ -6,7 +6,7 @@ public static class DistribuitingJob
 {
     public static int CreateJob(ServiceType service, List<Title> ListJobsCountMined)
     {
-        Logo.PrintLogo();                 
+        // Logo.PrintLogo();                 
 
         var companyId = 0;
         switch (service.JobsCount)

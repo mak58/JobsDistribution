@@ -34,7 +34,7 @@ public static class IncludeServiceType
         PrintIntoScreen.ConsoleWriteline("Enter the number of charges for this type of service separated by a space:\n ");        
         
         #region /// Show all Charges options available
-            var chargesDataSource = QueryService.GetActiveCharges(true);                   
+            var chargesDataSource = QueryChargeType.GetActiveCharges(true);                   
                             
             var chargesFromUser = Console.ReadLine().Split(' ', ','); // here it takes the existent Charges
         #endregion

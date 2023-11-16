@@ -8,44 +8,15 @@ public static class QueryService
         .Where(c => c.Active == true)
         .Select(c => c.Id)
         .ToList();
-    
-    public static List<int> GetIdActiveChanges() =>
-        DataSourceCharges
-        .ChargesTable()
-        .Where(c => c.Active == true)
-        .Select(c => c.Id)
-        .ToList();
 
-    public static List<Charge> GetActiveCharges(bool print = false)
-    {
-        var activeCharges = Program
-                            .Charges
-                            .Where(X => X.Active == true)
-                            .ToList();        
 
-        if(print)
-            foreach (var item in activeCharges)
-                Console.WriteLine($"Id = {item.Id}, {item.Description}");
+    /// <summary>
+    /// This method make a list joining Jobs and ValueForwardigs
+    /// The list group all companies contanining quantity anda amount 
+    /// </summary>
+    /// <param name="code"></param>
+    /// <returns></returns>
 
-        return activeCharges;
-    }
-
-    public static int GetLastJobId() =>
-        Program.Jobs.Count > 0 
-            ? Program.Jobs.Last().Id 
-            : 0;        
-
-    public static int GetLastChargeId() =>
-        Program
-        .Charges
-        .Last()
-        .Id;
-
-    public static int GetLastValueForwardingId() =>
-        Program.ValueForwardings.Count > 0
-            ? Program.ValueForwardings.Last().Id
-            : 0;
-    
     public static List<Title> GetTitlesListByServiceTypeCode(string code)
     {
         var listActiveCompanies = GetActiveCompanies();
@@ -81,17 +52,17 @@ public static class QueryService
         
         foreach (var item in listJobsValues)
         {
-            System.Console.WriteLine($" {item.Id}- {item.Code} - {item.Company} - {item.TotalValue}");
-            Thread.Sleep(300);
+            Console.WriteLine($" {item.Id}- {item.Code} - {item.Company} - {item.TotalValue}");
+            // Thread.Sleep(300);
         }
-        Thread.Sleep(9000);
+        // Thread.Sleep(2000);
             listJobsCount.Add(titleCounting);
         }
         
         #region // It's just for test
             foreach (var item in listJobsCount)        
                 Console.WriteLine($"Code= {code}, Id= {item.Id},Quantity= {item.Quantity}, Amount= {item.Amount}");
-            Thread.Sleep(2000);
+            // Thread.Sleep(2000);
         #endregion
 
         return listJobsCount;
@@ -102,9 +73,10 @@ public static class QueryService
     /// </summary>
     /// <param name="code"></param>
     /// Type code parameter 
-    /// <returns></returns> <summary>
-    /// sum decimal value calcuated 
-    /// </summary>
+    /// <returns>
+    /// sum decimal value calcuated
+    /// </returns>
+
     public static decimal GetChangesListByServiceTypeCode(string code)
     {           
         
@@ -113,10 +85,7 @@ public static class QueryService
                       join charge in Program.Charges                    // Join Charges ids from ServiceTypes to ChargesTable
                       on Charge equals charge.Id                        // matching the code from ServiceTypes to ChargesTable code 
                       where service.Code == code                        // codes are equals
-                      select new                                        
-                      {                        
-                        charge.Value                                    // fetch only one field (chargeValue)
-                      };
+                      select new { charge.Value };
 
         var sumCharges = 0M;
         foreach (var item in charges)

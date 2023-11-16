@@ -14,29 +14,39 @@ public static class InitiateJob
     /// This parameter receives the option chosen by the user in the application menu.
     /// </summary>
     
-    public static void OrderingJob(int chosenService)
-    {        
-        Logo.PrintLogo();                
+    public static void CreatingANewJob()
+    {
+        Logo.PrintLogo();
 
         var serviceId = UserInteraction
-                        .GetServiceType(); 
+                        .GetServiceType();
+
+        _ = OrderingJob(serviceId); 
+    }
+    public static bool OrderingJob(int serviceId, bool test = false)
+    {                  
+        var charges = UserInteraction
+                        .GetChargesType(serviceId, test);              
         
         ServiceType? serviceKind = Program
                                   .ServiceTypes
-                                  .FirstOrDefault(s => s.Id == serviceId.Item1); // Here I have the serviceType full properties.
+                                  .FirstOrDefault(s => s.Id == serviceId); // Here I have the serviceType full properties.
 
-        UserInteraction.PresentServices(serviceKind);
+        if(!test)
+            UserInteraction.PresentServices(serviceKind);
 
         var ListJobsCountMined = QueryService
                                 .GetTitlesListByServiceTypeCode(serviceKind.Code);        
                                     
         var companyId = DistribuitingJob
                         .CreateJob(serviceKind, ListJobsCountMined);
-
-        UserInteraction.IdJobResponseToUser(companyId);         
+        if(!test)
+            UserInteraction.IdJobResponseToUser(companyId);         
 
         JobRepository.AddJob(serviceKind.Code, companyId);
 
-        ValueForwardingRepository.AddValueForwarding(companyId, serviceId.Item2, serviceKind.Code);         
+        ValueForwardingRepository.AddValueForwarding(companyId, charges, serviceKind.Code);
+
+        return true;
     }  
 }

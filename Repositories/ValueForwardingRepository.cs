@@ -4,13 +4,14 @@ namespace Distribuited.Repositories;
 
 public class ValueForwardingRepository
 {
-    public static bool AddValueForwarding(int companyId, object charges, string code)
-    {    
+    public static bool AddValueForwarding(int companyId, int[] charges, string code)
+    {   
+                
         var valueForwarding = new ValueForwarding()
         {   
-            Id = QueryService.GetLastValueForwardingId() + 1,
+            Id = QueryValueForwarding.GetLastValueForwardingId() + 1,
             JobId = companyId,
-            Charges = charges as int[],
+            Charges = charges,
             TotalValue = QueryService.GetChangesListByServiceTypeCode(code)
         };
 

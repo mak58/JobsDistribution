@@ -4,7 +4,7 @@ namespace Distribuited.Services.Distribuition;
 
 public class UserInteraction
 {
-    public static (int, object) GetServiceType()
+    public static int GetServiceType()
     {
         Logo.PrintLogo();
 
@@ -21,27 +21,44 @@ public class UserInteraction
         PrintIntoScreen.ConsoleWriteline("Id [0] - Back");
 
         var idService = int.Parse(Console.ReadLine() ?? string.Empty);
+                
+        return idService;        
+    }  
 
-        PrintIntoScreen.ConsoleWriteline("Would you like to add default Charges? 'Y' or 'No'.");
-            var useDefaultCharges = char.Parse(Console.ReadLine().ToUpper()) == 'Y';
+    public static int[] GetChargesType(int idService, bool test)
+    {
+        bool useDefaultCharges;
 
-        var chargesDefault = new Object(); // Actually I don't know if this is a good practice LOL
+        if(test)
+            useDefaultCharges = true;
+        else
+        {
+            PrintIntoScreen.ConsoleWriteline("Would you like to add default Charges? 'Y' or 'No'.");
+            useDefaultCharges = char.Parse(Console.ReadLine().ToUpper()) == 'Y';
+        }
 
-        if (useDefaultCharges)        
+        int[]? chargesDefault = null; // Actually I don't know if this is a good practice LOL
+        string[]? newCharges = null;
+
+        if (useDefaultCharges) 
+        {
             chargesDefault = Program
-                            .ServiceTypes
-                            .Where(x => x.Id == idService)
-                            .Select(x => x.Charges)
-                            .ToArray();        
+                            .ServiceTypes[idService]
+                            .Charges
+                            .ToArray();
+        }           
         else
         {
             PrintIntoScreen.ConsoleWriteline("Choose the Charges you want to use.");
-            var activeCharges = QueryService.GetActiveCharges(true);
-            chargesDefault = Console.ReadLine().Split(' ', ',');
+            // var activeCharges = QueryChargeType.GetActiveCharges(true); 
+            newCharges = Console.ReadLine().Split(' ');
         }
-                
-        return (idService, chargesDefault);        
-    }  
+
+        for (int i = 0; i < newCharges.Length; i++)
+            chargesDefault[i] = int.Parse(newCharges[i]);
+                        
+        return chargesDefault;
+    }
 
     public static void PresentServices(ServiceType serviceKind)
     {
