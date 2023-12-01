@@ -28,4 +28,30 @@ public static class QueryChargeType
         .Charges
         .Last()
         .Id;
+
+    public static int[] GetDefaultCharges(int idService)
+    {
+        ServiceType? one = new ();
+
+            one = Program
+                    .ServiceTypes                 
+                    .Find(x => x.Id == idService);    // Get an array in a list/Table   
+
+            return one.Charges;
+
+    }
+
+    public static decimal GetAmountByListCharges(int[] charges)
+    {
+        decimal value = 0M;
+        foreach (var item in charges)
+        {
+            Charge charge = new();
+            charge = Program.Charges.FirstOrDefault(x => x.Id == item);
+
+            value += charge.Value;
+        }
+                    
+        return value;
+    }
 }

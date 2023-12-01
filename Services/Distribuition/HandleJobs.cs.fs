@@ -4,7 +4,7 @@ using Distribuited.Services.Querys;
 
 namespace Distribuited.Services;
 
-public static class InitiateJob
+public static class HandleJobs
 {        
     /// <summary>
     /// This method calls all other methods that perform calculation, mining, user interaction and job distribution.
@@ -13,7 +13,7 @@ public static class InitiateJob
     /// This parameter receives the option chosen by the user in the application menu.
     /// </summary>
     
-    public static async void HandleJobs()
+    public static async void CreatingANewJob()
     {
         Logo.PrintLogo();
 
@@ -60,6 +60,7 @@ public static class InitiateJob
 
             for (int i = 0; i < companiesActives.Count; i++)
                 JobRepository.AddJob(serviceKind.Code, companiesActives[i]);
+
         }                
 
         return companyId;
@@ -74,17 +75,6 @@ public static class InitiateJob
                         .GetChargesType(serviceId, test);
 
         ValueForwardingRepository.AddValueForwarding(companyId, charges, serviceKind.Code);                        
-
-        if(serviceKind.JobsCount == JobCount.Replicated) // Add the seconday services
-        {            
-            var companiesActives = QueryService.GetActiveCompanies();
-            companiesActives.Remove(companyId);
-
-            var chargesDefault = QueryChargeType.GetDefaultCharges(serviceId);        
-
-            for (int i = 0; i < companiesActives.Count; i++)
-                ValueForwardingRepository.AddValueForwarding(companiesActives[i], chargesDefault, serviceKind.Code);
-        }                
 
     }
 }

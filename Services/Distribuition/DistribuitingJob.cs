@@ -1,22 +1,22 @@
-using Distribuited.Services.Querys;
-
 namespace Distribuited.Services;
 
 public static class DistribuitingJob
 {
     public static int CreateJob(ServiceType service, List<Title> ListJobsCountMined)
     {
-        // Logo.PrintLogo();                 
+        // Logo.PrintLogo();
 
-        var companyId = 0;
-        switch (service.JobsCount)
+        var companyId = service.JobsCount switch
         {   
-            case JobCount.Quantity : companyId = DistribuitionCalculation
-                                                .CalculateDistribuiteByQuatity(ListJobsCountMined); break;
+            JobCount.Quantity or JobCount.Replicated
+                 => DistribuitionCalculation
+                                    .CalculateDistribuiteByQuatity(ListJobsCountMined),
 
-            case JobCount.Amount : companyId = DistribuitionCalculation
-                                               .CalculateDistribuiteByAmount(ListJobsCountMined); break;            
-        }  
-        return companyId;                                                 
+            JobCount.Amount =>  DistribuitionCalculation
+                                    .CalculateDistribuiteByAmount(ListJobsCountMined),            
+            _ => 0
+        };        
+
+        return companyId;                                               
     }
 }

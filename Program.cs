@@ -1,4 +1,4 @@
-﻿/// Hello Guys! 2023-09-19 Tueday
+﻿/// Hello Guys! 2023-09-19 Tuesday
 
 public static class Program
 {

@@ -33,30 +33,24 @@ public class UserInteraction
             useDefaultCharges = true;
         else
         {
-            PrintIntoScreen.ConsoleWriteline("Would you like to add default Charges? 'Y' or 'No'.");
+            PrintIntoScreen.ConsoleWriteline("Would you like to add default Charges? 'Y' or 'N'.");
             useDefaultCharges = char.Parse(Console.ReadLine().ToUpper()) == 'Y';
         }
 
-        int[]? chargesDefault = null; // Actually I don't know if this is a good practice LOL
-        string[]? newCharges = null;
+        int[]? chargesDefault = Array.Empty<int>(); // Actually I don't know if this is a good practice LOL
+        string[]? newCharges = Array.Empty<string>();
 
-        if (useDefaultCharges) 
-        {
-            chargesDefault = Program
-                            .ServiceTypes[idService]
-                            .Charges
-                            .ToArray();
-        }           
+        if(useDefaultCharges) 
+            chargesDefault = QueryChargeType.GetDefaultCharges(idService);        
         else
         {
             PrintIntoScreen.ConsoleWriteline("Choose the Charges you want to use.");
             // var activeCharges = QueryChargeType.GetActiveCharges(true); 
             newCharges = Console.ReadLine().Split(' ');
         }
+                
+        chargesDefault = newCharges.Select(int.Parse).ToArray();
 
-        for (int i = 0; i < newCharges.Length; i++)
-            chargesDefault[i] = int.Parse(newCharges[i]);
-                        
         return chargesDefault;
     }
 

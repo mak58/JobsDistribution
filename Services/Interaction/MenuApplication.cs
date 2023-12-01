@@ -20,7 +20,7 @@ public static class MenuApplication
 
                 case 1: JobsReport.Report(); break;
                                                                             
-                case 2: InitiateJob.CreatingANewJob(); break;
+                case 2: InitiateJob.HandleJobs(); break;
 
                 case 3: IncludeServiceType.Include(); break;
 

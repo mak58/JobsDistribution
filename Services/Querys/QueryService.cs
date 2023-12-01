@@ -43,19 +43,16 @@ public static class QueryService
                                 .ToList();
                             
             var titleCounting = new Title() 
-            { Id = listActiveCompanies[i], 
+            {   Id = listActiveCompanies[i], 
                 Quantity = listJobsValues is not null ? listJobsValues.Count : 0, 
-                    Amount = listJobsValues is not null ? listJobsValues.Sum(x => x.TotalValue) : 0
+                Amount = listJobsValues is not null ? listJobsValues.Sum(x => x.TotalValue) : 0
             };   
 
         Console.WriteLine(listJobsValues.Count);
         
-        foreach (var item in listJobsValues)
-        {
-            Console.WriteLine($" {item.Id}- {item.Code} - {item.Company} - {item.TotalValue}");
-            // Thread.Sleep(300);
-        }
-        // Thread.Sleep(2000);
+        foreach (var item in listJobsValues)        
+            Console.WriteLine($" {item.Id}- {item.Code} - {item.Company} - {item.TotalValue}");        
+        
             listJobsCount.Add(titleCounting);
         }
         
